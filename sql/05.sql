@@ -9,3 +9,14 @@
  * HINT:
  * This can be solved using either a LEFT JOIN or the NOT IN operator.
  */
+
+WITH actors AS(
+    SELECT last_name, first_name FROM actor),
+
+cust AS(
+    SELECT last_name, first_name FROM customer)
+
+SELECT * from actors
+WHERE (actors.last_name, actors.first_name)
+NOT IN (SELECT * FROM cust)
+ORDER BY actors.last_name, actors.first_name;
